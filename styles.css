@@ -8,3 +8,72 @@ body {
     min-height: 100vh;
     margin: 0;
 }
+/* Calculator */
+.calculator {
+    background-color: black;
+    height: 720px;
+    width: 720px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+/* number grid */
+#keypad {
+    width: 400px;
+    height:500px;
+    margin: 0;
+    /* background-color: purple; */
+    background-color: black;
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 2px; */
+}
+
+.btn {
+    /* background-color: rgb(39, 39, 39); */
+    background-color: rgb(7, 7, 7);
+    color: white;
+    width: 100px;
+    height:100px;
+    font-size: 40px;
+    border-radius: 50%;
+}
+
+.clearBtn,
+.delBtn,
+.equalsBtn {
+    background-color: rgb(39, 39, 39);
+    color: white;
+    width: 133.3px;
+    height:100px;
+    font-size: 40px;
+    border-radius: 50%;
+}
+
+.btn-offwhite {
+    background-color: rgb(151, 151, 151);
+}
+
+.btn-orange {
+    background-color: orange;
+}
+
+/* screen */
+.screen {
+    background-color: gainsboro;
+    width: 400px;
+    height: 100px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.operationScreen {
+    /* background-color: teal; */
+    background-color: gainsboro;
+    width: 400px;
+    height: 70px;
+    margin-bottom: 15px;
+}
