@@ -73,7 +73,10 @@ body {
 .operationScreen {
     /* background-color: teal; */
     background-color: gainsboro;
+    color: black;
     width: 400px;
     height: 70px;
     margin-bottom: 15px;
+    font-size: 60px;
+    overflow: hidden;
 }
