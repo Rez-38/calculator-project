@@ -5,16 +5,19 @@ operationScreen.textContent = 'ERRORRRRR';
 
 // Memory
 let number1 = '';
+console.log(`number1 is empty: ${number1}`);
 
 let operator = '';
+console.log(`operator is empty: ${operator}`);
 
 let number2 = '';
+console.log(`number2 is empty: ${number2}`);
 
 //Blinking Indicator
 const allowedValues = {
     numbers: ["0","1","2","3","4","5","6","7","8","9","."],
     operators: ["+","-","*","x","/","÷",],
-    actions: ["Enter","Backspace","Escape",],
+    actions: ["Enter","Backspace","Escape","C","Del","=",],
 }
 
 // document.addEventListener('keydown', (e) => {
@@ -46,6 +49,15 @@ ops.forEach((opBtn) => {
     });
 });
 // Actions
+const actions = document.querySelectorAll('.action');
+actions.forEach((actionBtn) => {
+    actionBtn.addEventListener('click', () => {
+        console.log("click on action...");
+        const btnVal = actionBtn.textContent;
+        console.log(`btn value: ${btnVal}`);
+        handleInput(btnVal);
+    });
+});
 
 // ================
 // Function Bank  =
@@ -63,14 +75,23 @@ function handleInput(value) {
             console.log(`operationScreen updated: ${number2}`);
         }
     } else if (allowedValues.operators.includes(value)) {
-        if (number1 !== '') {
+        if (number1 !== '' && operator == '') {
             operator = value;
             console.log(`operator pressed: ${value}`);
             operationScreen.textContent = '';
             console.log(`operationScreen set up for next operand`);
         }
     } else if (allowedValues.actions.includes(value)) {
-        
+        if (value === 'C') {
+            number1 = '';
+            operator = '';
+            number2 = '';
+            operationScreen.textContent = '';
+        } else if (value === 'Del') {
+            operationScreen.textContent;
+        } else if (value === '=') {
+            
+        }
         
     }
 }
@@ -99,4 +120,10 @@ function multiply(a, b) {
 
 function divide(a, b) {
     return a / b;
+}
+
+function displayMem() {
+    console.log(`number1 current value: ${number1}`);
+    console.log(`operator current value: ${operator}`);
+    console.log(`number2 current value: ${number2}`);
 }
