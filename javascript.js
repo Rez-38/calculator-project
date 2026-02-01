@@ -63,6 +63,12 @@ actions.forEach((actionBtn) => {
 // Function Bank  =
 // ================
 
+function operate() {
+    if (operator === '+') {
+        operationScreen.textContent = add(number1, number2);
+    }
+}
+
 function handleInput(value) {
     if (allowedValues.numbers.includes(value)) {
         if (operator === '') {
@@ -90,14 +96,14 @@ function handleInput(value) {
         } else if (value === 'Del') {
             operationScreen.textContent;
         } else if (value === '=') {
-            
+            operate();
         }
         
     }
 }
 
 function add(a, b) {
-	return a + b;
+	return parseInt(a) + parseInt(b);
 };
 
 function subtract(a, b) {
