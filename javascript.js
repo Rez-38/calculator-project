@@ -66,6 +66,16 @@ actions.forEach((actionBtn) => {
 function operate() {
     if (operator === '+') {
         operationScreen.textContent = add(number1, number2);
+        console.log(`Screen result: ${operationScreen.textContent}`);
+    } else if (operator === '-') {
+        operationScreen.textContent = subtract(number1, number2);
+        console.log(`Screen result: ${operationScreen.textContent}`);
+    } else if (operator === '*' || operator === 'x') {
+        operationScreen.textContent = multiply(number1, number2);
+        console.log(`Screen result: ${operationScreen.textContent}`);
+    } else if (operator === '/' || operator === '÷') {
+        operationScreen.textContent = divide(number1, number2);
+        console.log(`Screen result: ${operationScreen.textContent}`);
     }
 }
 
@@ -95,8 +105,9 @@ function handleInput(value) {
             operationScreen.textContent = '';
         } else if (value === 'Del') {
             operationScreen.textContent;
-        } else if (value === '=') {
+        } else if (value === '=' ) {
             operate();
+            displayMem();
         }
         
     }
@@ -107,7 +118,7 @@ function add(a, b) {
 };
 
 function subtract(a, b) {
-	return a - b;
+	return parseInt(a) - parseInt(b);
 };
 
 function sum(arr) {
@@ -121,11 +132,11 @@ function multiplyArr(arr) {
 };
 
 function multiply(a, b) {
-    return a * b;
+    return parseInt(a) * parseInt(b);
 }
 
 function divide(a, b) {
-    return a / b;
+    return parseInt(a) / parseInt(b);
 }
 
 function displayMem() {
