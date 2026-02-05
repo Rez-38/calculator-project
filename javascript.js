@@ -102,7 +102,9 @@ function operate() {
 function handleInput(value) {
     if (allowedValues.numbers.includes(value)) {
         if (operator === '') {
-            number1 += value;
+            if (number1 === '0') {
+                number1 = value;
+            } else {number1 += value;}
             operationScreen.textContent = number1;
             console.log(`operationScreen updated: ${number1}`);
         } else {
@@ -148,7 +150,7 @@ function handleInput(value) {
             displayMem();
             if (number1 === '') {
                 return;
-            } else number1 = operationScreen.textContent;
+            } else {number1 = operationScreen.textContent;}
             operator = '';
             number2 = '';
             console.log("number1, ready to operate:");
