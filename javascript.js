@@ -36,7 +36,7 @@ nums.forEach((numBtn) => {
         const btnVal = numBtn.textContent;
         console.log(`btn value: ${btnVal}`);
         handleInput(btnVal);
-    });   
+    });
 });
 // Operators
 const ops = document.querySelectorAll('.op');
@@ -91,10 +91,10 @@ function handleInput(value) {
             console.log(`operationScreen updated: ${number2}`);
         }
     } else if (allowedValues.operators.includes(value)) {
-        if (number1 !== '' && operator == '') {
+        if (number1 !== '' && operator == '' || operator !== value && number2 == '' && number1 !== '') {
             operator = value;
             console.log(`operator pressed: ${value}`);
-            operationScreen.textContent = '';
+            operationScreen.textContent = `${value}`;
             console.log(`operationScreen set up for next operand`);
         }
     } else if (allowedValues.actions.includes(value)) {
@@ -112,11 +112,13 @@ function handleInput(value) {
             } else if (number2 === '' && operator !== '') {
                 operator = del(operator);
                 console.log(`operator changes to ${operator}`);
-                // operationScreen.textContent = operator;
+                operationScreen.textContent = number1;
             } else if (number2 !== '') {
                 number2 = del(number2);
                 console.log(`number2 changes to ${number2}`);
-                operationScreen.textContent = number2;
+                if (number2 !== '') {
+                    operationScreen.textContent = number2;
+                } else {operationScreen.textContent = operator}
             }
         } else if (value === '=' ) {
             operate();
