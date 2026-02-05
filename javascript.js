@@ -55,6 +55,13 @@ ops.forEach((opBtn) => {
         handleInput(btnVal);
     });
 });
+document.addEventListener('keydown', (e) => {
+    if (allowedValues.operators.includes(e.key)) {
+        console.log(`Valid operator keydown: ${e.key}`);
+        handleInput(e.key);
+    }
+});
+
 // Actions
 const actions = document.querySelectorAll('.action');
 actions.forEach((actionBtn) => {
@@ -64,6 +71,12 @@ actions.forEach((actionBtn) => {
         console.log(`btn value: ${btnVal}`);
         handleInput(btnVal);
     });
+});
+document.addEventListener('keydown', (e) => {
+    if (allowedValues.actions.includes(e.key)) {
+        console.log(`Valid action keydown: ${e.key}`);
+        handleInput(e.key);
+    }
 });
 
 // ================
@@ -106,14 +119,14 @@ function handleInput(value) {
             console.log(`operationScreen set up for next operand`);
         }
     } else if (allowedValues.actions.includes(value)) {
-        if (value === 'C') {
+        if (value === 'C' || value === 'Escape') {
             number1 = '';
             operator = '';
             number2 = '';
             operationScreen.textContent = '';
             console.log(`operationScreen is clear: ${operationScreen.textContent}`);
             defaultScreen();
-        } else if (value === 'DEL') {
+        } else if (value === 'DEL' || value === 'Backspace') {
             if (number1 !== '' && number2 === '' && operator === '') {
                 number1 = del(number1);
                 console.log(`number1 changes to ${number1}`);
@@ -130,7 +143,7 @@ function handleInput(value) {
                 } else {operationScreen.textContent = operator}
             }
             defaultScreen();
-        } else if (value === '=' && number2 !== '') {
+        } else if (value === 'Enter' || value === '=' && number2 !== '') {
             operate();
             displayMem();
             number1 = operationScreen.textContent;
