@@ -146,7 +146,9 @@ function handleInput(value) {
         } else if (value === 'Enter' || value === '=' && number2 !== '') {
             operate();
             displayMem();
-            number1 = operationScreen.textContent;
+            if (number1 === '') {
+                return;
+            } else number1 = operationScreen.textContent;
             operator = '';
             number2 = '';
             console.log("number1, ready to operate:");
