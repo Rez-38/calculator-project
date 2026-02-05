@@ -1,7 +1,7 @@
 console.log("Hello World!");
 
 const operationScreen = document.querySelector('#operationScreen');
-operationScreen.textContent = 'ERRORRRRR';
+
 
 // Memory
 let number1 = '';
@@ -105,6 +105,7 @@ function handleInput(value) {
             number2 = '';
             operationScreen.textContent = '';
             console.log(`operationScreen is clear: ${operationScreen.textContent}`);
+            defaultScreen();
         } else if (value === 'DEL') {
             if (number1 !== '' && number2 === '' && operator === '') {
                 number1 = del(number1);
@@ -121,6 +122,7 @@ function handleInput(value) {
                     operationScreen.textContent = number2;
                 } else {operationScreen.textContent = operator}
             }
+            defaultScreen();
         } else if (value === '=' && number2 !== '') {
             operate();
             displayMem();
@@ -168,4 +170,14 @@ function displayMem() {
 
 function del(elem) {
     return elem.slice(0, -1);
+}
+
+function defaultScreen() {
+    if (operationScreen.textContent === '') {
+        operationScreen.textContent = '0';
+    }
+}
+
+function displayError() {
+    operationScreen.textContent = 'ERRORRRRR';
 }
