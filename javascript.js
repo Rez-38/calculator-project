@@ -91,7 +91,8 @@ function handleInput(value) {
             console.log(`operationScreen updated: ${number2}`);
         }
     } else if (allowedValues.operators.includes(value)) {
-        if (number1 !== '' && operator == '' || operator !== value && number2 == '' && number1 !== '') {
+        if (number1 !== '' && operator == '' || 
+            operator !== value && number2 == '' && number1 !== '') {
             operator = value;
             console.log(`operator pressed: ${value}`);
             operationScreen.textContent = `${value}`;
@@ -120,8 +121,13 @@ function handleInput(value) {
                     operationScreen.textContent = number2;
                 } else {operationScreen.textContent = operator}
             }
-        } else if (value === '=' ) {
+        } else if (value === '=' && number2 !== '') {
             operate();
+            displayMem();
+            number1 = operationScreen.textContent;
+            operator = '';
+            number2 = '';
+            console.log("number1, ready to operate:");
             displayMem();
         }
         
