@@ -17,7 +17,7 @@ console.log(`number2 is empty: ${number2}`);
 const allowedValues = {
     numbers: ["0","1","2","3","4","5","6","7","8","9","."],
     operators: ["+","-","*","x","/","÷",],
-    actions: ["Enter","Backspace","Escape","C","Del","=",],
+    actions: ["Enter","Backspace","Escape","C","DEL","=",],
 }
 
 // document.addEventListener('keydown', (e) => {
@@ -103,8 +103,21 @@ function handleInput(value) {
             operator = '';
             number2 = '';
             operationScreen.textContent = '';
-        } else if (value === 'Del') {
-            operationScreen.textContent;
+            console.log(`operationScreen is clear: ${operationScreen.textContent}`);
+        } else if (value === 'DEL') {
+            if (number1 !== '' && number2 === '' && operator === '') {
+                number1 = del(number1);
+                console.log(`number1 changes to ${number1}`);
+                operationScreen.textContent = number1;
+            } else if (number2 === '' && operator !== '') {
+                operator = del(operator);
+                console.log(`operator changes to ${operator}`);
+                // operationScreen.textContent = operator;
+            } else if (number2 !== '') {
+                number2 = del(number2);
+                console.log(`number2 changes to ${number2}`);
+                operationScreen.textContent = number2;
+            }
         } else if (value === '=' ) {
             operate();
             displayMem();
@@ -143,4 +156,8 @@ function displayMem() {
     console.log(`number1 current value: ${number1}`);
     console.log(`operator current value: ${operator}`);
     console.log(`number2 current value: ${number2}`);
+}
+
+function del(elem) {
+    return elem.slice(0, -1);
 }
