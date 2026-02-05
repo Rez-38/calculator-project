@@ -38,6 +38,13 @@ nums.forEach((numBtn) => {
         handleInput(btnVal);
     });
 });
+document.addEventListener('keydown', (e) => {
+    if (allowedValues.numbers.includes(e.key)) {
+        console.log(`Valid num keydown: ${e.key}`);
+        handleInput(e.key);
+    }
+});
+
 // Operators
 const ops = document.querySelectorAll('.op');
 ops.forEach((opBtn) => {
