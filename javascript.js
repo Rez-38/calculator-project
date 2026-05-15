@@ -95,6 +95,7 @@ function operate() {
         console.log(`Screen result: ${operationScreen.textContent}`);
     } else if (operator === '/' || operator === '÷') {
         operationScreen.textContent = divide(number1, number2);
+        if (operationScreen.textContent === 'NaN') {operationScreen.textContent = `Don't get clever now...` }
         console.log(`Screen result: ${operationScreen.textContent}`);
     }
 }
@@ -102,12 +103,14 @@ function operate() {
 function handleInput(value) {
     if (allowedValues.numbers.includes(value)) {
         if (operator === '') {
+            if (number1.includes(".") && value === '.') {console.log(`activating dot suppression...`); return}
             if (number1 === '0') {
                 number1 = value;
             } else {number1 += value;}
             operationScreen.textContent = number1;
             console.log(`operationScreen updated: ${number1}`);
         } else {
+            if (number2.includes(".") && value === '.') {console.log(`activating dot suppression 2...`); return}
             number2 += value;
             operationScreen.textContent = number2;
             console.log(`operationScreen updated: ${number2}`);
@@ -158,7 +161,7 @@ function handleInput(value) {
         } else if (value === 'Enter' || value === '=' && number2 !== '') {
             operate();
             displayMem();
-            if (number1 === '' || number1 === NaN) {
+            if (number1 === '') {
                 return;
             } else {number1 = operationScreen.textContent;}
             operator = '';
@@ -215,4 +218,13 @@ function defaultScreen() {
 
 function displayError() {
     operationScreen.textContent = 'ERRORRRRR';
+}
+
+function dotCheck() {
+    if (number1.includes(".")) {
+        return;
+    }
+    if (number2.includes(".")) {
+        return;
+    }
 }
