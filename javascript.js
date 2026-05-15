@@ -124,6 +124,9 @@ function handleInput(value) {
             number1 = operationScreen.textContent;
             operator = value;
             number2 = '';
+
+            operationScreen.append(operator);
+
             displayMem();
             console.log(`operationScreen set up for next operand`);
         }
@@ -155,7 +158,7 @@ function handleInput(value) {
         } else if (value === 'Enter' || value === '=' && number2 !== '') {
             operate();
             displayMem();
-            if (number1 === '') {
+            if (number1 === '' || number1 === NaN) {
                 return;
             } else {number1 = operationScreen.textContent;}
             operator = '';
