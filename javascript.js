@@ -113,11 +113,18 @@ function handleInput(value) {
             console.log(`operationScreen updated: ${number2}`);
         }
     } else if (allowedValues.operators.includes(value)) {
-        if (number1 !== '' && operator == '' || 
-            operator !== value && number2 == '' && number1 !== '') {
+        if (number1 !== '' && operator == '' || // number 1 = value, operator = empty
+            operator !== value && number2 == '' && number1 !== '') {    // operator not value and number2 = empty and number1 has value
             operator = value;
             console.log(`operator pressed: ${value}`);
             operationScreen.textContent = `${value}`;
+            console.log(`operationScreen set up for next operand`);
+        } else if (number1 !== '' && operator !== '' && number2 !== '') {
+            operate();
+            number1 = operationScreen.textContent;
+            operator = value;
+            number2 = '';
+            displayMem();
             console.log(`operationScreen set up for next operand`);
         }
     } else if (allowedValues.actions.includes(value)) {
@@ -199,6 +206,7 @@ function del(elem) {
 function defaultScreen() {
     if (operationScreen.textContent === '') {
         operationScreen.textContent = '0';
+        displayMem();
     }
 }
 
