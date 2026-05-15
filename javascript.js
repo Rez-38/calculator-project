@@ -106,7 +106,7 @@ function handleInput(value) {
             if (number1.includes(".") && value === '.') {console.log(`activating dot suppression...`); return}
             if (number1 === '0') {
                 number1 = value;
-            } else {number1 += value;}
+            } else if (number1 !== '0' /* && */) {number1 += value;}
             operationScreen.textContent = number1;
             console.log(`operationScreen updated: ${number1}`);
         } else {
@@ -163,10 +163,11 @@ function handleInput(value) {
             displayMem();
             if (number1 === '') {
                 return;
-            } else {number1 = operationScreen.textContent;}
+            } /*else {number1 = operationScreen.textContent;}*/
+            number1 = '';
             operator = '';
             number2 = '';
-            console.log("number1, ready to operate:");
+            // console.log("number1, ready to operate:");
             displayMem();
         }
         
