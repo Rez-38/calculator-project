@@ -18,13 +18,7 @@ const allowedValues = {
     numbers: ["0","1","2","3","4","5","6","7","8","9","."],
     operators: ["+","-","*","x","/","÷",],
     actions: ["Enter","Backspace","Escape","C","DEL","=",],
-}
-
-// document.addEventListener('keydown', (e) => {
-//     if (allowedValues.includes(e.key)) {
-
-//     }
-// }); 
+} 
 
 
 // Numpad functionality
@@ -106,7 +100,7 @@ function handleInput(value) {
             if (number1.includes(".") && value === '.') {console.log(`activating dot suppression...`); return}
             if (number1 === '0') {
                 number1 = value;
-            } else if (number1 !== '0' /* && */) {number1 += value;}
+            } else {number1 += value;}
             operationScreen.textContent = number1;
             console.log(`operationScreen updated: ${number1}`);
         } else {
@@ -158,7 +152,7 @@ function handleInput(value) {
                 } else {operationScreen.textContent = operator}
             }
             defaultScreen();
-        } else if (value === 'Enter' || value === '=' && number2 !== '') {
+        } else if (value === 'Enter' && number2 !== '' || value === '=' && number2 !== '') {
             operate();
             displayMem();
             if (number1 === '') {
