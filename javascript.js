@@ -85,16 +85,16 @@ document.addEventListener('keydown', (e) => {
 
 function operate() {
     if (operator === '+') {
-        operationScreen.textContent = add(number1, number2);
+        operationScreen.textContent = roundToX(add(number1, number2), 10);
         console.log(`Screen result: ${operationScreen.textContent}`);
     } else if (operator === '-') {
-        operationScreen.textContent = subtract(number1, number2);
+        operationScreen.textContent = roundToX(subtract(number1, number2), 10);
         console.log(`Screen result: ${operationScreen.textContent}`);
     } else if (operator === '*' || operator === 'x') {
-        operationScreen.textContent = multiply(number1, number2);
+        operationScreen.textContent = roundToX(multiply(number1, number2), 10);
         console.log(`Screen result: ${operationScreen.textContent}`);
     } else if (operator === '/' || operator === '÷') {
-        operationScreen.textContent = divide(number1, number2);
+        operationScreen.textContent = roundToX(divide(number1, number2), 10);
         if (operationScreen.textContent === 'NaN') {operationScreen.textContent = `Don't get clever now...` }
         console.log(`Screen result: ${operationScreen.textContent}`);
     }
@@ -229,3 +229,7 @@ function dotCheck() {
         return;
     }
 }
+
+function roundToX(num, decimals) {
+                return +(Math.round(num + "e" + decimals) + "e-" + decimals);
+            }
